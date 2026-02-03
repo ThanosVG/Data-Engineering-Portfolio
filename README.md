@@ -1,1 +1,10 @@
 # Data Engineering Learning Portfolio - Projects from SQL basics to pipelines
+"Day 1.00: GitHub setup complete. Ready for Data Engineering projects."
+"Day 2.00: SQL basics with contact DB project."
+"Day 2.01: Fixed table exists error, added robust CREATE, and verified contact DB."
+"Day 3.00: Added test.db from Day 2 SQL experiments."
+"Day 3.01: Python dashboard output."
+"Day 3.02: Added salary analysis script and employee DB."
+"Day 4.01: Completed joins, reports, and optimization."
+"Day 5.00: Added views, plans, and optimization."
+"Day 6: Python ETL Pipeline - Processed employee data with bonuses and error handling."
