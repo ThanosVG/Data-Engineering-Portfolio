@@ -7,4 +7,4 @@
 "Day 3.02: Added salary analysis script and employee DB."  
 "Day 4.01: Completed joins, reports, and optimization."  
 "Day 5.00: Added views, plans, and optimization."  
-"Day 6: Python ETL Pipeline - Processed employee data with bonuses and error handling."  
+"Day 6.00: Python ETL Pipeline - Processed employee data with bonuses and error handling."  
