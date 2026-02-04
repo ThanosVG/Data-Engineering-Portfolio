@@ -15,5 +15,5 @@
 "Day 8.01: Updated ETL script with random city generation"  
 "Day 8.02: Fixed variable inconsistency in enriched ETL script"  
 "Day 8.03: Fixed SyntaxError in enriched ETL script by removing formatting artifacts"  
-"Day 8.04: Added bonus calculation to enriched ETL script"
+"Day 8.04: Added bonus calculation to enriched ETL script"  
 "Day 8.05: Fixed ValueError in enriched ETL by using row-wise apply for bonus adjustment"
