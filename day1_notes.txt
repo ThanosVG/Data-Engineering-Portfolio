@@ -1,3 +1,0 @@
-"Day 1: GitHub setup complete. Ready for Data Engineering projects!" 
-"Experiment: Adding a test line." 
-"Experiment: Adding a test line." 
