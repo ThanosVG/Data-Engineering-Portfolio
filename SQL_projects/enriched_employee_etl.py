@@ -4,7 +4,10 @@ import sqlite3
 import random
 
 # API config (use your key from Day 7)
-api_key = 'e789ad9163819b9a14d962c92b0d0d94'
+from dotenv import load_dotenv
+import os
+load_dotenv()  # Loads .env file
+api_key = os.getenv('OPENWEATHER_API_KEY')  # Pulls the key safely
 cities = ['Thessaloniki', 'Glasgow']  # Example from CSV—expand based on data
 
 # Extract CSV (reuse from Day 6)

@@ -4,7 +4,10 @@ import sqlite3
 import time  # New: For retry delay
 
 # API config (replace with your key)
-api_key = 'e789ad9163819b9a14d962c92b0d0d94'  # Free from openweathermap.org
+from dotenv import load_dotenv
+import os
+load_dotenv()  # Loads .env file
+api_key = os.getenv('OPENWEATHER_API_KEY')  # Pulls the key safely
 city = 'Thessaloniki'  # Test city
 url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric'
 
