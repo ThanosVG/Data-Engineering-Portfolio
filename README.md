@@ -17,3 +17,4 @@
 "Day 8.03: Fixed SyntaxError in enriched ETL script by removing formatting artifacts"  
 "Day 8.04: Added bonus calculation to enriched ETL script"  
 "Day 8.05: Fixed ValueError in enriched ETL by using row-wise apply for bonus adjustment"
+"Day 9.00: PySpark ETL project - salaries with bonus, group-bys and partitioning"
