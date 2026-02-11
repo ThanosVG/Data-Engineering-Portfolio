@@ -1,75 +1,65 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, rand, when, lit
-import os
-import shutil
+from pyspark.sql.functions import avg, col, rand, lit
 
-# ────────────────────────────────────────────────
 # CONFIG
-# ────────────────────────────────────────────────
-INPUT_CSV        = "salaries.csv"
-OUTPUT_FOLDER    = "processed_salaries_parquet"
-BONUS_MAX_PCT    = 0.30
+INPUT_CSV = "salaries.csv"
+OUTPUT_FOLDER = "processed_salaries_parquet"
+BONUS_MAX_PCT = 0.30
 
-# Clean previous run
-if os.path.exists(OUTPUT_FOLDER):
-    print(f"Removing previous output: {OUTPUT_FOLDER}")
-    shutil.rmtree(OUTPUT_FOLDER)
-
-# ────────────────────────────────────────────────
 # START SPARK
-# ────────────────────────────────────────────────
-spark = SparkSession.builder \
-    .appName("Salaries ETL with Random Bonus") \
-    .getOrCreate()
-
+spark = SparkSession.builder.appName("Salaries ETL").getOrCreate()
 spark.sparkContext.setLogLevel("ERROR")
 
-# ────────────────────────────────────────────────
-# 1. EXTRACT - Read CSV (NO inferSchema)
-# ────────────────────────────────────────────────
+# 1. EXTRACT - Read CSV
 print("Reading CSV...")
-df = spark.read.csv(INPUT_CSV, header=True, inferSchema=False)
+df = spark.read.csv(INPUT_CSV, header=True, inferSchema=True)
 
-print("Original schema (all string):")
+print("Original schema:")
 df.printSchema()
+print(f"Original row count: {df.count()}")
+df.show(5)
 
-# ────────────────────────────────────────────────
-# Cast important columns manually
-# ────────────────────────────────────────────────
-from pyspark.sql.types import IntegerType, DoubleType, StringType
-
-df = df.withColumn("work_year", col("work_year").cast(IntegerType())) \
-       .withColumn("salary_in_usd", col("salary_in_usd").cast(DoubleType())) \
-       .withColumn("remote_ratio", col("remote_ratio").cast(IntegerType())) \
-       .withColumn("salary", col("salary").cast(DoubleType()))   # if you need the original salary
-
-print("Schema after casting:")
-df.printSchema()
-
-# ────────────────────────────────────────────────
-# 2. TRANSFORM - Add random bonus
-# ────────────────────────────────────────────────
+# 2. TRANSFORM - Add random bonus and total_comp
 print("Adding random bonus (0–30% of salary_in_usd)...")
+df_transformed = df.withColumn("bonus_pct", rand() * lit(BONUS_MAX_PCT)) \
+                   .withColumn("bonus", col("salary_in_usd") * col("bonus_pct")) \
+                   .withColumn("total_comp", col("salary_in_usd") + col("bonus")) \
+                   .drop("bonus_pct")
 
-df_transformed = df \
-    .withColumn("bonus_pct", rand() * lit(BONUS_MAX_PCT)) \
-    .withColumn("bonus", col("salary_in_usd") * col("bonus_pct")) \
-    .withColumn("total_comp", col("salary_in_usd") + col("bonus")) \
-    .drop("bonus_pct")
+print("Transformed schema:")
+df_transformed.printSchema()
+df_transformed.show(5)
 
-print("Sample after transformation:")
-df_transformed.select(
-    "job_title",
-    "salary_in_usd",
-    "bonus",
-    "total_comp"
-).show(10, truncate=False)
+# 3. GROUP BY (your requests - showing 5 rows each)
+print("Running group by aggregations...")
+# Avg salary
+df_transformed.groupBy("job_title").agg(avg("salary_in_usd").alias("avg_salary")).show(5)
+df_transformed.groupBy("company_location").agg(avg("salary_in_usd").alias("avg_salary")).show(5)
+df_transformed.groupBy("company_size").agg(avg("salary_in_usd").alias("avg_salary")).show(5)
+df_transformed.groupBy("remote_ratio").agg(avg("salary_in_usd").alias("avg_salary")).show(5)
+df_transformed.groupBy("employment_type").agg(avg("salary_in_usd").alias("avg_salary")).show(5)
+df_transformed.groupBy("experience_level").agg(avg("salary_in_usd").alias("avg_salary")).show(5)
+df_transformed.groupBy("work_year").agg(avg("salary_in_usd").alias("avg_salary")).show(5)
+df_transformed.groupBy("salary_currency").agg(avg("salary_in_usd").alias("avg_salary")).show(5)
+df_transformed.groupBy("employee_residence").agg(avg("salary_in_usd").alias("avg_salary")).show(5)
 
-# ────────────────────────────────────────────────
-# 3. LOAD - Write Parquet
-# ────────────────────────────────────────────────
+# Avg bonus
+df_transformed.groupBy("job_title").agg(avg("bonus").alias("avg_bonus")).show(5)
+df_transformed.groupBy("experience_level").agg(avg("bonus").alias("avg_bonus")).show(5)
+df_transformed.groupBy("work_year").agg(avg("bonus").alias("avg_bonus")).show(5)
+df_transformed.groupBy("salary_currency").agg(avg("bonus").alias("avg_bonus")).show(5)
+df_transformed.groupBy("employee_residence").agg(avg("bonus").alias("avg_bonus")).show(5)
+
+# Avg total_comp
+df_transformed.groupBy("job_title").agg(avg("total_comp").alias("avg_total_comp")).show(5)
+df_transformed.groupBy("experience_level").agg(avg("total_comp").alias("avg_total_comp")).show(5)
+df_transformed.groupBy("work_year").agg(avg("total_comp").alias("avg_total_comp")).show(5)
+df_transformed.groupBy("salary_currency").agg(avg("total_comp").alias("avg_total_comp")).show(5)
+df_transformed.groupBy("employee_residence").agg(avg("total_comp").alias("avg_total_comp")).show(5)
+
+# 4. LOAD - Write Parquet with partition
 print(f"Writing Parquet to: {OUTPUT_FOLDER}")
-df_transformed.write.mode("overwrite").parquet(OUTPUT_FOLDER)
+df_transformed.write.mode("overwrite").partitionBy('experience_level').parquet(OUTPUT_FOLDER)
 
 print("ETL finished successfully!")
 spark.stop()
