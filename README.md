@@ -19,3 +19,5 @@
 "Day 8.05: Fixed ValueError in enriched ETL by using row-wise apply for bonus adjustment"
 "Day 9.00: PySpark ETL project - salaries with bonus, group-bys and partitioning"
 "Day 9.01: PySpark ETL with random bonus, group bys, and partition"
+"Day 10.00:Producer: Reads `salaries.csv` and sends each row as JSON to Kafka topic `salaries_stream` (simulates real-time ingestion)
+"Day 11.00:Consumer: Pulls messages from the topic and prints them live (simulates processing/sink)"
