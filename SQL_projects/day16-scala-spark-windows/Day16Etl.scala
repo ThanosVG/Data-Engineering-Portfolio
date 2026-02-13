@@ -28,6 +28,7 @@ object Day16Etl {
     val dfWindows = dfTransformed.withColumn("running_total_comp", sum("total_comp").over(windowSpec.rowsBetween(Window.unboundedPreceding, Window.currentRow)))
                                  .withColumn("prev_total_comp", lag("total_comp", 1, 0).over(windowSpec))
                                  .withColumn("rank_per_job", row_number.over(windowSpec))
+								 .withColumn("yoy_change", col("total_comp") - col("prev_total_comp"))
 
     print("Schema with windows:")
     dfWindows.printSchema()
