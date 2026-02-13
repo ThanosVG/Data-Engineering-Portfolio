@@ -39,3 +39,4 @@
 "Day 17.02: Kafka + Spark Streaming - fixed binary Spark setup"  
 "Day 17.03: Kafka + Spark Streaming - fixed timestamp column"  
 "Day 18.00: Kafka + Spark Streaming - added file output and quality checks"  
+"Day 19.00: Kafka + Spark Streaming - added more aggregations by experience_level"  
