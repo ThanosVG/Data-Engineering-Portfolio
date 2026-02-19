@@ -1,4 +1,59 @@
-# Data Engineering Learning Portfolio - Projects from SQL basics to pipelines  
+# Data Engineering Portfolio
+
+![Badge](https://img.shields.io/badge/Python-Expert-green) ![Badge](https://img.shields.io/badge/Spark-Advanced-blue) ![Badge](https://img.shields.io/badge/Kafka-Intermediate-yellow) ![Badge](https://img.shields.io/badge/Docker-Beginner-red)  
+
+Welcome to my Data Engineering portfolio. I'm building skills in ETL pipelines, big data tools, and data architecture. This repo showcases hands-on projects from my 30-day learning journey.  
+
+## Projects  
+
+### 1. SQL ETL (Days 1-8)  
+- **Description**: Built employee ETL with SQL (ingestion, transformations, aggs).  
+- **Tech**: SQLite, Python.  
+- **Key Files**: employee_etl.py, salary_analysis.sql.  
+- **Learn more**: [Folder](sql-etl) | [Demo Video](link-to-video).  
+
+### 2. PySpark ETL (Days 9-13)  
+- **Description**: Local PySpark pipeline for salaries data (bonus calc, aggs, Parquet output).  
+- **Tech**: PySpark, Pandas.  
+- **Key Files**: pyspark_salaries_etl.py.  
+- **Learn more**: [Folder](pyspark-etl) | [Demo Video](link-to-video).  
+
+### 3. Scala Spark (Days 14-16)  
+- **Description**: Scala version of ETL with joins/windows.  
+- **Tech**: Scala, Spark.  
+- **Key Files**: Day15Etl.scala.  
+- **Learn more**: [Folder](scala-etl) | [Demo Video](link-to-video).  
+ 
+### 4. Kafka Streaming (Days 17-19)  
+- **Description**: Streaming ingestion with Kafka + Spark (real-time aggs).  
+- **Tech**: Kafka, PySpark Streaming.  
+- **Key Files**: kafka_producer.py, spark_kafka_consumer.py.  
+- **Learn more**: [Folder](kafka-streaming) | [Demo Video](link-to-video).  
+
+### 5. Docker Containerization (Days 20-23)  
+- **Description**: Dockerized PySpark/Scala/Kafka pipelines.  
+- **Tech**: Docker.
+- **Key Files**: Dockerfile, Dockerfile-kafka.  
+- **Learn more**: [Folder](docker-pipelines) | [Demo Video](link-to-video).  
+
+### 6. Combined Pipeline (Days 24-25)  
+- **Description**: End-to-end streaming ETL (Kafka → Scala Spark → Parquet).  
+- **Tech**: Kafka, Scala Spark Streaming.  
+- **Key Files**: Day25Streaming.scala, kafka_producer.py.  
+- **Learn more**: [Folder](combined-pipeline) | [Demo Video](link-to-video).  
+
+## Tech Stack  
+- Languages: Python, Scala, SQL  
+- Tools: PySpark, Kafka, Docker, Spark Streaming  
+
+## Next Steps  
+- Cloud integration (AWS EMR)  
+- CI/CD with GitHub Actions  
+- Full data architecture project  
+
+Contact me: [Email](t.vgenopoulos@gmail.com)  
+
+Detailed day by day:
 "Day 1.00: GitHub setup complete. Ready for Data Engineering projects."  
 "Day 2.00: SQL basics with contact DB project."  
 "Day 2.01: Fixed table exists error, added robust CREATE, and verified contact DB."  
@@ -84,4 +139,5 @@
 "Day 24.12: Combined pipeline complete - fixed startup and topic"  
 "Day 24.13: Dockerized producer to fix connection"  
 "Day 24.14: Fixed Spark session conflict for consumer"  
-"Day 25.00: Scala + Kafka streaming pipeline"  
+"Day 25.00: Scala + Kafka streaming pipeline"    
+"Day 26.00: Portfolio Polish"  
