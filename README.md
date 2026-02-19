@@ -1,6 +1,6 @@
 # Data Engineering Portfolio
 
-![Badge](https://img.shields.io/badge/Python-Expert-green) ![Badge](https://img.shields.io/badge/Spark-Advanced-blue) ![Badge](https://img.shields.io/badge/Kafka-Intermediate-yellow) ![Badge](https://img.shields.io/badge/Docker-Beginner-red)  
+![Badge](https://img.shields.io/badge/Python-Advanced-blue) ![Badge](https://img.shields.io/badge/Spark-Advanced-blue) ![Badge](https://img.shields.io/badge/Kafka-Intermediate-yellow) ![Badge](https://img.shields.io/badge/Docker-Beginner-red)  
 
 Welcome to my Data Engineering portfolio. I'm building skills in ETL pipelines, big data tools, and data architecture. This repo showcases hands-on projects from my 30-day learning journey.  
 
@@ -10,37 +10,37 @@ Welcome to my Data Engineering portfolio. I'm building skills in ETL pipelines, 
 - **Description**: Built employee ETL with SQL (ingestion, transformations, aggs).  
 - **Tech**: SQLite, Python.  
 - **Key Files**: employee_etl.py, salary_analysis.sql.  
-- **Learn more**: [Folder](sql-etl) | [Demo Video](link-to-video).  
+- **Learn more**: [Folder](sql-etl).  
 
 ### 2. PySpark ETL (Days 9-13)  
 - **Description**: Local PySpark pipeline for salaries data (bonus calc, aggs, Parquet output).  
 - **Tech**: PySpark, Pandas.  
 - **Key Files**: pyspark_salaries_etl.py.  
-- **Learn more**: [Folder](pyspark-etl) | [Demo Video](link-to-video).  
+- **Learn more**: [Folder](pyspark-etl).  
 
 ### 3. Scala Spark (Days 14-16)  
 - **Description**: Scala version of ETL with joins/windows.  
 - **Tech**: Scala, Spark.  
 - **Key Files**: Day15Etl.scala.  
-- **Learn more**: [Folder](scala-etl) | [Demo Video](link-to-video).  
+- **Learn more**: [Folder](scala-etl).  
  
 ### 4. Kafka Streaming (Days 17-19)  
 - **Description**: Streaming ingestion with Kafka + Spark (real-time aggs).  
 - **Tech**: Kafka, PySpark Streaming.  
 - **Key Files**: kafka_producer.py, spark_kafka_consumer.py.  
-- **Learn more**: [Folder](kafka-streaming) | [Demo Video](link-to-video).  
+- **Learn more**: [Folder](kafka-streaming).  
 
 ### 5. Docker Containerization (Days 20-23)  
 - **Description**: Dockerized PySpark/Scala/Kafka pipelines.  
 - **Tech**: Docker.
 - **Key Files**: Dockerfile, Dockerfile-kafka.  
-- **Learn more**: [Folder](docker-pipelines) | [Demo Video](link-to-video).  
+- **Learn more**: [Folder](docker-pipelines).  
 
 ### 6. Combined Pipeline (Days 24-25)  
 - **Description**: End-to-end streaming ETL (Kafka → Scala Spark → Parquet).  
 - **Tech**: Kafka, Scala Spark Streaming.  
 - **Key Files**: Day25Streaming.scala, kafka_producer.py.  
-- **Learn more**: [Folder](combined-pipeline) | [Demo Video](link-to-video).  
+- **Learn more**: [Folder](combined-pipeline).  
 
 ## Tech Stack  
 - Languages: Python, Scala, SQL  

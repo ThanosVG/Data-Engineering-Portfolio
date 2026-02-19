@@ -1,0 +1,10 @@
+FROM python:3.10-slim
+
+WORKDIR /app
+
+RUN pip install kafka-python pandas
+
+COPY kafka_producer.py .
+COPY salaries.csv .
+
+CMD ["python", "kafka_producer.py"]
